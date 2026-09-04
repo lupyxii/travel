@@ -13,11 +13,21 @@
     --border-radius: 12px;
 }
 
+html, body {
+    height: 100%;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: var(--dark);
     background-color: var(--light);
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
 }
 
 .container {
@@ -230,7 +240,7 @@ body {
     color: white;
     text-align: center;
     padding: 30px 0;
-    margin-top: 50px;
+    margin-top: auto;
 }
 
 /* Responsive */
