@@ -1,0 +1,481 @@
+:root {
+  --bg: #f5f6f4;
+  --card: #ffffff;
+  --text: #263238;
+  --muted: #78909c;
+  --border: #e4e7e8;
+  --accent: #356859;
+  --accent-light: #e8f2ee;
+  --warning: #fff4d6;
+  --warning-border: #e2a900;
+  --danger: #fdeaea;
+  --danger-border: #d9534f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Noto Sans Thai",
+    sans-serif;
+  line-height: 1.6;
+}
+
+/* ==============================
+   HERO
+============================== */
+
+.hero {
+  background: linear-gradient(
+    145deg,
+    #263d35,
+    #356859
+  );
+
+  color: white;
+  padding: 32px 18px 26px;
+}
+
+.hero-inner {
+  max-width: 920px;
+  margin: auto;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  margin-top: 7px;
+  opacity: .85;
+}
+
+.hero-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 18px;
+}
+
+.hero-badge {
+  background: rgba(255,255,255,.13);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 99px;
+  padding: 6px 11px;
+  font-size: 13px;
+}
+
+/* ==============================
+   NAV
+============================== */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,.96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+}
+
+.nav-inner {
+  max-width: 920px;
+  margin: auto;
+  display: flex;
+}
+
+.nav a {
+  flex-shrink: 0;
+  padding: 11px 13px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.nav a:hover {
+  background: #f1f3f2;
+}
+
+/* ==============================
+   MAIN
+============================== */
+
+main {
+  max-width: 920px;
+  margin: auto;
+  padding: 20px 14px 70px;
+}
+
+section {
+  scroll-margin-top: 65px;
+  margin-bottom: 28px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 21px;
+  font-weight: 800;
+  margin-bottom: 13px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 17px;
+  margin-bottom: 12px;
+}
+
+/* ==============================
+   OVERVIEW
+============================== */
+
+.overview-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(2, 1fr);
+  gap: 10px;
+}
+
+.overview-item {
+  background: #f7f9f8;
+  border-radius: 12px;
+  padding: 13px;
+}
+
+.overview-label {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.overview-value {
+  font-weight: 700;
+  margin-top: 3px;
+}
+
+/* ==============================
+   DAY
+============================== */
+
+.day {
+  position: relative;
+  padding-left: 20px;
+  border-left: 4px solid var(--accent);
+}
+
+.day-number {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.day-title {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.day-date {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.day-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 9px 0;
+}
+
+.meta {
+  background: var(--accent-light);
+  color: var(--accent);
+  border-radius: 8px;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.day ul {
+  margin-bottom: 0;
+}
+
+/* ==============================
+   STATUS
+============================== */
+
+.status {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.status.confirm {
+  background: #e4f3ea;
+  color: #28734a;
+}
+
+.status.pending {
+  background: #fff2cc;
+  color: #936b00;
+}
+
+/* ==============================
+   BOOKING
+============================== */
+
+.booking-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.booking-name {
+  font-weight: 700;
+}
+
+.booking-detail {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* ==============================
+   CHECKLIST
+============================== */
+
+.progress-card {
+  margin-bottom: 13px;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 7px;
+}
+
+.progress-bar {
+  height: 9px;
+  background: #e2e6e4;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  width: 0%;
+  height: 100%;
+  background: var(--accent);
+  transition: width .25s ease;
+}
+
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #edf0ef;
+}
+
+.checklist li:last-child {
+  border-bottom: 0;
+}
+
+.checklist input {
+  width: 18px;
+  height: 18px;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+.checklist input:checked + span {
+  color: #9aa4a0;
+  text-decoration: line-through;
+}
+
+/* ==============================
+   EXPENSE
+============================== */
+
+.expense-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--accent-light);
+  border-radius: 12px;
+  padding: 14px;
+  margin-top: 13px;
+}
+
+.expense-total strong {
+  font-size: 21px;
+}
+
+/* ==============================
+   TIMING
+============================== */
+
+.timing-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(2, 1fr);
+  gap: 10px;
+}
+
+.timing {
+  padding: 13px;
+  border-radius: 12px;
+  background: #f7f9f8;
+}
+
+.timing strong {
+  display: block;
+}
+
+/* ==============================
+   IMPORTANT
+============================== */
+
+.info {
+  background: #edf7fb;
+  border-left: 5px solid #3287aa;
+}
+
+.warning {
+  background: var(--warning);
+  border-left: 5px solid var(--warning-border);
+}
+
+.danger {
+  background: var(--danger);
+  border-left: 5px solid var(--danger-border);
+}
+
+/* ==============================
+   BUTTON
+============================== */
+
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 13px;
+}
+
+button {
+  border: 0;
+  border-radius: 9px;
+  padding: 9px 13px;
+  cursor: pointer;
+  font-size: 13px;
+  background: var(--accent);
+  color: white;
+}
+
+button.secondary {
+  background: #e9edeb;
+  color: var(--text);
+}
+
+/* ========================================
+   Back Button
+   ======================================== */
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    margin: 16px 20px 0;
+    padding: 8px 14px;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    color: var(--accent);
+
+    font-size: 14px;
+    font-weight: 600;
+
+    box-shadow: var(--shadow);
+
+    transition: all 0.2s;
+}
+
+.back-button:hover {
+    background: var(--accent-light);
+    border-color: var(--accent);
+
+    transform: translateX(-2px);
+}
+
+/* ==============================
+   FOOTER
+============================== */
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  padding: 25px 15px 40px;
+  font-size: 12px;
+}
+
+/* ==============================
+   MOBILE
+============================== */
+
+@media (max-width: 600px) {
+
+  .hero h1 {
+    font-size: 26px;
+  }
+
+  main {
+    padding: 15px 10px 60px;
+  }
+
+  .card {
+    padding: 14px;
+    border-radius: 13px;
+  }
+
+  .overview-grid,
+  .timing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: 19px;
+  }
+
+  .booking-card {
+    align-items: flex-start;
+  }
+
+}
