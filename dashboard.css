@@ -522,10 +522,19 @@ main {
 
 /* Screenshot-inspired trip dashboard layout */
 body {
-  background:
-    linear-gradient(180deg, rgba(17, 19, 21, 0.54), #111315 510px),
-    url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=85") center top / 100% 510px no-repeat,
-    var(--midnight);
+  position: relative;
+  isolation: isolate;
+  background: var(--midnight);
+}
+
+body::before {
+  position: fixed;
+  z-index: -1;
+  inset: 0 0 0 230px;
+  background: url("https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/BlankMap-Equirectangular.svg/1920px-BlankMap-Equirectangular.svg.png") center 120px / min(1120px, 100%) auto no-repeat;
+  content: "";
+  opacity: 0.13;
+  pointer-events: none;
 }
 
 .topbar {
@@ -1138,6 +1147,13 @@ body {
     padding: 10px 16px;
     border-right: 0;
     border-bottom: 1px solid var(--slate);
+  }
+
+  body::before {
+    inset: 116px 0 0;
+    background-position: center 145px;
+    background-size: min(980px, 120%) auto;
+    opacity: 0.11;
   }
 
   .dashboard-brand {
