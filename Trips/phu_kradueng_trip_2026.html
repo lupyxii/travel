@@ -1,0 +1,1611 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#111315" />
+    <title>PHU KRADUENG — Expedition 001</title>
+    <style>
+      :root {
+        --bg: #111315;
+        --panel: #191d1f;
+        --panel2: #202628;
+        --line: #30383a;
+        --text: #ecebe5;
+        --muted: #9aa29d;
+        --accent: #d98245;
+        --green: #82977f;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font:
+          14px/1.55 Inter,
+          "Noto Sans Thai",
+          system-ui,
+          sans-serif;
+      }
+
+      .shell {
+        display: grid;
+        grid-template-columns: 230px 1fr;
+        min-height: 100vh;
+      }
+
+      aside {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        padding: 25px 17px;
+        border-right: 1px solid var(--line);
+        background: #141719;
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+      }
+
+      .brand {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        padding: 0 8px;
+      }
+
+      .mark {
+        width: 38px;
+        height: 38px;
+        border-radius: 12px;
+        background: #33251d;
+        color: var(--accent);
+        display: grid;
+        place-items: center;
+        font-size: 23px;
+      }
+
+      .brand b {
+        font-size: 12px;
+        letter-spacing: 0.13em;
+      }
+
+      .brand small {
+        display: block;
+        color: var(--muted);
+        font-size: 9px;
+        letter-spacing: 0.15em;
+      }
+
+      .navlabel {
+        font-size: 10px;
+        color: #6f7974;
+        letter-spacing: 0.18em;
+        padding: 0 12px;
+        margin-bottom: 8px;
+      }
+
+      .nav {
+        display: grid;
+        gap: 5px;
+      }
+
+      .nav button {
+        border: 0;
+        background: none;
+        color: #aeb5b0;
+        text-align: left;
+        padding: 11px 12px;
+        border-radius: 10px;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        font-size: 13px;
+      }
+
+      .nav button:hover,
+      .nav button.active {
+        background: #252b2d;
+        color: var(--text);
+      }
+
+      .nav button.active i {
+        color: var(--accent);
+      }
+
+      .nav i {
+        font-style: normal;
+        color: #77817c;
+      }
+
+      .sidefoot {
+        margin-top: auto;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        color: var(--muted);
+        font-size: 10px;
+      }
+
+      .sidefoot b {
+        display: block;
+        color: var(--text);
+        font-size: 12px;
+      }
+
+      main {
+        max-width: 1450px;
+        width: 100%;
+        margin: auto;
+        padding: 27px 36px 80px;
+      }
+
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        color: var(--muted);
+        font-size: 10px;
+        letter-spacing: 0.15em;
+      }
+
+      .actions {
+        display: flex;
+        gap: 8px;
+      }
+
+      .btn {
+        border: 1px solid var(--line);
+        background: var(--panel2);
+        color: var(--text);
+        padding: 8px 12px;
+        border-radius: 9px;
+        font-size: 11px;
+      }
+
+      .btn.primary {
+        background: var(--accent);
+        color: #171411;
+        border-color: var(--accent);
+        font-weight: 700;
+      }
+
+      .hero {
+        border: 1px solid #343b3b;
+        border-radius: 23px;
+        min-height: 300px;
+        background:
+          linear-gradient(
+            90deg,
+            rgba(13, 17, 17, 0.95),
+            rgba(13, 17, 17, 0.55) 65%,
+            rgba(13, 17, 17, 0.15)
+          ),
+          url("https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1800&q=85")
+            center/cover;
+        margin-bottom: 15px;
+      }
+
+      .heroIn {
+        padding: 34px 36px;
+        max-width: 660px;
+      }
+
+      .eyebrow {
+        color: var(--accent);
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        font-weight: 700;
+      }
+
+      .hero h1 {
+        font-size: clamp(38px, 5vw, 60px);
+        line-height: 0.98;
+        letter-spacing: -0.05em;
+        margin: 13px 0 10px;
+      }
+
+      .hero p {
+        color: #c3c8c2;
+        font-size: 13px;
+      }
+
+      .meta {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-top: 25px;
+        color: #d5d8d2;
+        font-size: 10px;
+        letter-spacing: 0.08em;
+      }
+
+      .meta i {
+        color: var(--accent);
+        font-style: normal;
+      }
+
+      .grid {
+        display: grid;
+        gap: 13px;
+      }
+
+      .stats {
+        grid-template-columns: repeat(4, 1fr);
+        margin-bottom: 13px;
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 17px;
+        padding: 17px;
+      }
+
+      .label,
+      .muted {
+        color: var(--muted);
+        font-size: 10px;
+      }
+
+      .value {
+        font-size: 27px;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        margin-top: 4px;
+      }
+
+      .sub {
+        font-size: 9px;
+        color: #78827c;
+      }
+
+      .accent {
+        color: var(--accent);
+      }
+
+      .cols {
+        grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.8fr);
+      }
+
+      .head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 26px 0 12px;
+      }
+
+      .head h2 {
+        font-size: 15px;
+        margin: 0;
+      }
+
+      .head small {
+        font-size: 9px;
+        color: var(--muted);
+        letter-spacing: 0.13em;
+      }
+
+      .bar {
+        height: 7px;
+        background: #303739;
+        border-radius: 99px;
+        overflow: hidden;
+        margin: 11px 0 7px;
+      }
+
+      .bar span {
+        display: block;
+        height: 100%;
+        width: 0;
+        background: var(--accent);
+        transition: width 0.2s;
+      }
+
+      .row {
+        display: flex;
+        justify-content: space-between;
+        font-size: 10px;
+      }
+
+      .days {
+        display: grid;
+        gap: 8px;
+      }
+
+      .day {
+        display: grid;
+        grid-template-columns: 50px 1fr auto;
+        gap: 10px;
+        align-items: center;
+        padding: 11px;
+        background: #202628;
+        border: 1px solid transparent;
+        border-radius: 12px;
+        cursor: pointer;
+      }
+
+      .day:hover,
+      .day.sel {
+        border-color: #805637;
+        background: #262b2b;
+      }
+
+      .daynum {
+        font-size: 9px;
+        color: var(--accent);
+      }
+
+      .day strong {
+        display: block;
+        font-size: 11px;
+      }
+
+      .day small {
+        display: block;
+        color: var(--muted);
+        font-size: 9px;
+      }
+
+      .tag {
+        font-size: 8px;
+        border: 1px solid #414b47;
+        border-radius: 20px;
+        padding: 4px 7px;
+      }
+
+      .detail {
+        margin-top: 10px;
+        padding: 13px;
+        background: #141819;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+      }
+
+      .detail h3 {
+        font-size: 12px;
+        margin: 0 0 7px;
+      }
+
+      .detail ul {
+        margin: 0;
+        padding-left: 17px;
+        color: #bac1bb;
+        font-size: 10px;
+      }
+
+      .detail li {
+        margin: 4px 0;
+      }
+
+      .budgetrow {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 9px 0;
+        border-bottom: 1px solid #2b3233;
+        font-size: 10px;
+      }
+
+      .budgetrow:last-child {
+        border: 0;
+      }
+
+      .budgetrow input {
+        width: 100px;
+        background: #111516;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        color: var(--text);
+        padding: 5px;
+        text-align: right;
+        font-size: 10px;
+      }
+
+      .note {
+        font-size: 9px;
+        color: var(--muted);
+        margin-top: 11px;
+      }
+
+      .checkgrid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .checkitem {
+        display: flex;
+        gap: 8px;
+        align-items: flex-start;
+        padding: 7px 0;
+        border-top: 1px solid #2b3233;
+        font-size: 10px;
+        color: #cbd0cb;
+      }
+
+      .checkitem input {
+        accent-color: var(--accent);
+        margin-top: 3px;
+      }
+
+      .checkitem.done label {
+        text-decoration: line-through;
+        color: #78827c;
+      }
+
+      .checkcard h3 {
+        font-size: 11px;
+        margin: 0 0 9px;
+      }
+
+      .checkcard h3 span {
+        float: right;
+        color: var(--muted);
+        font-size: 9px;
+        font-weight: 400;
+      }
+
+      .members {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .member {
+        background: #202628;
+        border: 1px solid var(--line);
+        padding: 11px;
+        border-radius: 11px;
+      }
+
+      .avatar {
+        width: 27px;
+        height: 27px;
+        border-radius: 9px;
+        background: #3a3028;
+        color: #e4a06b;
+        display: grid;
+        place-items: center;
+        font-size: 10px;
+        margin-bottom: 7px;
+      }
+
+      .member input {
+        width: 100%;
+        background: transparent;
+        border: 0;
+        border-bottom: 1px solid #414a49;
+        color: var(--text);
+        font-size: 10px;
+        padding: 4px 0;
+        outline: none;
+      }
+
+      .member small {
+        font-size: 8px;
+        color: var(--muted);
+      }
+
+      .infogrid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .info {
+        background: #202628;
+        border-radius: 12px;
+        padding: 13px;
+      }
+
+      .info b {
+        display: block;
+        font-size: 10px;
+        margin: 5px 0;
+      }
+
+      .info p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 9px;
+      }
+
+      .footer {
+        margin-top: 30px;
+        padding-top: 15px;
+        border-top: 1px solid var(--line);
+        display: flex;
+        justify-content: space-between;
+        color: #69736e;
+        font-size: 9px;
+      }
+
+      .mobile {
+        display: none;
+      }
+
+      .toast {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #e8e7e1;
+        color: #171a19;
+        padding: 9px 14px;
+        border-radius: 9px;
+        font-size: 11px;
+        opacity: 0;
+        transition: 0.2s;
+      }
+
+      .toast.show {
+        opacity: 1;
+      }
+
+      @media (max-width: 850px) {
+        .shell {
+          grid-template-columns: 1fr;
+        }
+
+        aside {
+          display: none;
+        }
+
+        main {
+          padding: 16px 14px 85px;
+        }
+
+        .heroIn {
+          padding: 25px 22px;
+        }
+
+        .stats {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .cols {
+          grid-template-columns: 1fr;
+        }
+
+        .checkgrid {
+          grid-template-columns: 1fr;
+        }
+
+        .members {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .infogrid {
+          grid-template-columns: 1fr;
+        }
+
+        .mobile {
+          position: fixed;
+          display: flex;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background: rgba(20, 23, 25, 0.96);
+          backdrop-filter: blur(12px);
+          border-top: 1px solid var(--line);
+          justify-content: space-around;
+          padding: 8px 3px calc(8px + env(safe-area-inset-bottom));
+          z-index: 5;
+        }
+
+        .mobile button {
+          border: 0;
+          background: none;
+          color: #8f9992;
+          font-size: 8px;
+          display: grid;
+          gap: 2px;
+        }
+
+        .mobile button span {
+          font-size: 16px;
+        }
+
+        .mobile button.active {
+          color: var(--accent);
+        }
+
+        .top {
+          font-size: 8px;
+        }
+
+        .btn {
+          padding: 7px 8px;
+        }
+      }
+
+      .timeline-day {
+        border-top: 1px solid var(--line);
+        padding: 18px 0;
+      }
+
+      .timeline-day:first-of-type {
+        border-top: 0;
+        padding-top: 4px;
+      }
+
+      .timeline-title {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 14px;
+        align-items: baseline;
+        margin-bottom: 12px;
+      }
+
+      .timeline-title span {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+        color: var(--accent);
+        font-weight: 800;
+      }
+
+      .timeline-title b {
+        font-size: 15px;
+      }
+
+      .schedule {
+        display: grid;
+        grid-template-columns: 118px 1fr;
+        gap: 12px;
+        padding: 7px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.045);
+      }
+
+      .schedule > span {
+        font-size: 12px;
+        color: var(--accent);
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .schedule p {
+        margin: 0;
+        font-size: 13px;
+        line-height: 1.55;
+        color: var(--muted);
+      }
+
+      .route-points {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
+        margin: 10px 0 14px;
+      }
+
+      .route-points > div {
+        padding: 10px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.025);
+      }
+
+      .route-points b {
+        display: block;
+        color: var(--accent);
+        font-size: 11px;
+        margin-bottom: 4px;
+      }
+
+      .route-points span {
+        font-size: 12px;
+        color: var(--text);
+      }
+
+      @media (max-width: 600px) {
+        .schedule {
+          grid-template-columns: 94px 1fr;
+          gap: 8px;
+        }
+
+        .route-points {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .timeline-title b {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="shell">
+      <aside>
+        <div class="brand">
+          <div class="mark">⌁</div>
+          <div><b>FIELD NOTES</b><small>TRAVEL / EXPEDITION</small></div>
+        </div>
+        <div>
+          <div class="navlabel">YOUR TRIP</div>
+          <nav class="nav">
+            <button class="active" data-target="overview">
+              <i>◫</i> Overview</button
+            ><button data-target="itinerary"><i>◷</i> Itinerary</button
+            ><button data-target="budget"><i>◇</i> Budget</button
+            ><button data-target="gear"><i>▤</i> Gear checklist</button
+            ><button data-target="members"><i>♧</i> Members</button
+            ><button data-target="info"><i>ⓘ</i> Field information</button>
+          </nav>
+        </div>
+        <div class="sidefoot">
+          <b>EXPEDITION 001</b>PHU KRADUENG · LOEI, THAILAND<br /><span
+            style="color: var(--accent)"
+            >06—10 NOV 2026</span
+          >
+        </div>
+      </aside>
+      <main>
+        <div class="top">
+          <span>TRAVEL / FIELD NOTES / 001</span>
+          <div class="actions">
+            <button class="btn" id="export">↧ Export data</button
+            ><button class="btn primary" id="reset">Reset demo</button>
+          </div>
+        </div>
+        <section id="overview">
+          <div class="hero">
+            <div class="heroIn">
+              <div class="eyebrow">EXPEDITION 001 · THAILAND</div>
+              <h1>PHU<br />KRADUENG.</h1>
+              <p>
+                A little escape above the clouds. Five days in the wild, one
+                shared adventure.
+              </p>
+              <div class="meta">
+                <span><i>◷</i> 06—10 NOV 2026</span
+                ><span><i>♧</i> 7 TRAVELERS</span
+                ><span><i>⌖</i> LOEI, THAILAND</span>
+              </div>
+            </div>
+          </div>
+          <div class="grid stats">
+            <div class="card">
+              <div class="label">TRIP DURATION</div>
+              <div class="value">05 <small class="muted">DAYS</small></div>
+              <div class="sub">4 NIGHTS · 1 EXPEDITION</div>
+            </div>
+            <div class="card">
+              <div class="label">TRAVELERS</div>
+              <div class="value">07 <small class="muted">PAX</small></div>
+              <div class="sub">GROUP ADVENTURE</div>
+            </div>
+            <div class="card">
+              <div class="label">COLLECTED FUND</div>
+              <div class="value" id="collected">฿21,000</div>
+              <div class="sub">฿3,000 / PERSON</div>
+            </div>
+            <div class="card">
+              <div class="label">SHARED FUND LEFT</div>
+              <div class="value accent" id="shared">฿5,000</div>
+              <div class="sub">AFTER VEHICLE BUDGET</div>
+            </div>
+          </div>
+          <div class="grid cols">
+            <div class="card">
+              <div class="row">
+                <b>Trip readiness</b
+                ><span class="muted" id="progressText">0% COMPLETE</span>
+              </div>
+              <div class="bar"><span id="progress"></span></div>
+              <div class="row">
+                <span class="muted" id="checkedText"
+                  >0 of 28 items prepared</span
+                ><span class="accent">GEAR CHECK</span>
+              </div>
+              <div class="head">
+                <h2>Expedition timeline</h2>
+                <small>SELECT A DAY</small>
+              </div>
+              <div class="days" id="days">
+                <div class="day sel" data-day="0">
+                  <div class="daynum">DAY 00</div>
+                  <div>
+                    <strong>เดินทางจากกรุงเทพฯ</strong
+                    ><small>06 NOV · 22:00 · OVERNIGHT VAN</small>
+                  </div>
+                  <span class="tag">TRANSIT</span>
+                </div>
+                <div class="day" data-day="1">
+                  <div class="daynum">DAY 01</div>
+                  <div>
+                    <strong>เดินขึ้นภูกระดึง</strong
+                    ><small>07 NOV · SI THAN → WANG KWANG</small>
+                  </div>
+                  <span class="tag">HIKING</span>
+                </div>
+                <div class="day" data-day="2">
+                  <div class="daynum">DAY 02</div>
+                  <div>
+                    <strong>สำรวจยอดภูกระดึง</strong
+                    ><small>08 NOV · SUNRISE + CLIFF ROUTE</small>
+                  </div>
+                  <span class="tag">EXPLORE</span>
+                </div>
+                <div class="day" data-day="3">
+                  <div class="daynum">DAY 03</div>
+                  <div>
+                    <strong>ลงภู → วัดคีรีวัน</strong
+                    ><small>09 NOV · DESCENT + TRANSFER</small>
+                  </div>
+                  <span class="tag">TRANSFER</span>
+                </div>
+                <div class="day" data-day="4">
+                  <div class="daynum">DAY 04</div>
+                  <div>
+                    <strong>อยุธยา → ดอนเมือง</strong
+                    ><small>10 NOV · FLIGHT 20:00</small>
+                  </div>
+                  <span class="tag">RETURN</span>
+                </div>
+              </div>
+              <div class="detail" id="detail">
+                <h3>DAY 01 · 06 NOVEMBER</h3>
+                <ul>
+                  <li>22:00 ออกเดินทางจากกรุงเทพฯ ด้วยรถตู้เหมาต่อเนื่อง</li>
+                  <li>เตรียมสัมภาระและของใช้จำเป็นไว้ให้หยิบสะดวก</li>
+                </ul>
+              </div>
+            </div>
+            <div class="card" id="budget">
+              <div class="head" style="margin: 0 0 9px">
+                <h2>Budget overview</h2>
+                <small>THB · EDITABLE</small>
+              </div>
+              <div class="label">COLLECTED FROM 7 MEMBERS</div>
+              <div class="value" style="font-size: 31px" id="budgetTotal">
+                ฿21,000
+              </div>
+              <div class="budgetrow">
+                <span>Van rental · 1,800 × 5 days</span><b>฿9,000</b>
+              </div>
+              <div class="budgetrow">
+                <span>Fuel estimate · paid separately</span><b>฿6,000</b>
+              </div>
+              <div class="budgetrow">
+                <span>Driver accommodation · 2 × 500</span><b>฿1,000</b>
+              </div>
+              <div class="budgetrow">
+                <span><b>Vehicle budget total</b></span
+                ><b>฿16,000</b>
+              </div>
+              <div class="budgetrow">
+                <span>Other shared expenses</span
+                ><input
+                  id="other"
+                  type="number"
+                  min="0"
+                  value="0"
+                  aria-label="Other shared expenses"
+                />
+              </div>
+              <div class="budgetrow">
+                <b>Remaining shared fund</b
+                ><b class="accent" id="remaining">฿5,000</b>
+              </div>
+              <p class="note">
+                เงินเก็บ 7 × ฿3,000 = ฿21,000 · ค่าทางด่วน / ที่จอด / อาหารคนขับ
+                / OT ยังไม่รวม
+              </p>
+            </div>
+          </div>
+        </section>
+        <section id="itinerary">
+          <div class="head">
+            <h2>Route & itinerary</h2>
+            <small>THE PLAN · 06—10 NOV</small>
+          </div>
+          <div class="grid infogrid">
+            <div class="info">
+              <div class="eyebrow">00 / TRANSIT</div>
+              <b>Bangkok → Phu Kradueng</b>
+              <p>
+                6 พ.ย. ออกเดินทาง 22:00 น. ระยะทางประมาณ 520–550 กม. ใช้เวลา 7–9
+                ชม. ไม่รวมแวะพัก คาดถึงอุทยานเช้าวันที่ 7 พ.ย.
+              </p>
+            </div>
+            <div class="info">
+              <div class="eyebrow">01 / ASCENT</div>
+              <b>Si Than → Lang Pae → Wang Kwang</b>
+              <p>
+                7 พ.ย. เริ่มเดินประมาณ 07:00 น. ระยะทางขึ้นภูราว 9 กม.
+                ใช้เวลาประมาณ 5–7 ชม. รวมพัก
+              </p>
+            </div>
+            <div class="info">
+              <div class="eyebrow">02 / PLATEAU</div>
+              <b>Pha Nok Aen + Cliff Route</b>
+              <p>
+                8 พ.ย. ชมพระอาทิตย์ขึ้น แล้วเดินเส้นทางหน้าผาไปผาหล่มสัก
+                รวมระยะทางทั้งวันประมาณ 20–22 กม.
+              </p>
+            </div>
+            <div class="info">
+              <div class="eyebrow">03 / DESCENT</div>
+              <b>Phu Kradueng → Wat Khiri Wan</b>
+              <p>
+                9 พ.ย. ลงจากภูช่วงเช้า แล้วเดินทางต่อไปวัดคีรีวัน อ.มวกเหล็ก
+                จ.สระบุรี คาดถึงช่วง 18:00–19:00 น.
+              </p>
+            </div>
+            <div class="info">
+              <div class="eyebrow">04 / RETURN</div>
+              <b>Ayutthaya → Don Mueang</b>
+              <p>
+                10 พ.ย. เที่ยวอยุธยา ก่อนออกไปสนามบินดอนเมือง
+                โดยตั้งเป้าถึงไม่เกิน 19:00 น. สำหรับเที่ยวบิน 20:00 น.
+              </p>
+            </div>
+          </div>
+          <!-- 
+        <div class="card" style="margin-top:12px">
+          <div class="head" style="margin:0 0 10px">
+            <h2>Daily schedule</h2><small>TIME ESTIMATES · LOCAL TIME</small>
+          </div>
+
+          <div class="timeline-day">
+            <div class="timeline-title"><span>DAY 00 · 6 NOV</span><b>กรุงเทพฯ → อุทยานแห่งชาติภูกระดึง</b></div>
+            <div class="schedule"><span>22:00</span>
+              <p>ออกเดินทางจากกรุงเทพฯ ด้วยรถตู้เหมา</p>
+            </div>
+            <div class="schedule"><span>05:00–07:00</span>
+              <p>คาดว่าจะถึงบริเวณอุทยานฯ ในเช้าวันที่ 7 พ.ย.</p>
+            </div>
+            <p class="note">ระยะทางประมาณ 520–550 กม. ใช้เวลาเดินทาง 7–9 ชม. โดยประมาณ ไม่รวมเวลาหยุดพักและสภาพจราจร</p>
+          </div>
+
+          <div class="timeline-day">
+            <div class="timeline-title"><span>DAY 01 · 7 NOV</span><b>เดินขึ้นภูกระดึง · ศรีฐาน → หลังแป → วังกวาง</b>
+            </div>
+            <div class="schedule"><span>05:00–06:00</span>
+              <p>ถึงอุทยาน ติดต่อเจ้าหน้าที่และประสานลูกหาบ</p>
+            </div>
+            <div class="schedule"><span>06:00–06:30</span>
+              <p>จัดสัมภาระ ชั่ง/ส่งกระเป๋าให้ลูกหาบ</p>
+            </div>
+            <div class="schedule"><span>06:30–07:00</span>
+              <p>รับประทานอาหารเช้า เตรียมน้ำและของว่าง</p>
+            </div>
+            <div class="schedule"><span>07:00–11:00</span>
+              <p>เริ่มเดินจากศรีฐานขึ้นไปยังหลังแป</p>
+            </div>
+            <div class="schedule"><span>11:00–11:30</span>
+              <p>พัก ถ่ายภาพ และชมวิวบริเวณหลังแป</p>
+            </div>
+            <div class="schedule"><span>11:30–12:00</span>
+              <p>พัก/เติมพลัง ดื่มน้ำและรับประทานของว่าง</p>
+            </div>
+            <div class="schedule"><span>12:00–13:30</span>
+              <p>เดินจากหลังแปไปยังศูนย์บริการนักท่องเที่ยววังกวาง</p>
+            </div>
+            <div class="schedule"><span>13:30–14:00</span>
+              <p>ถึงวังกวาง ตรวจสอบสัมภาระและเข้าพื้นที่พัก</p>
+            </div>
+            <div class="schedule"><span>14:00–15:00</span>
+              <p>กางเต็นท์และจัดอุปกรณ์</p>
+            </div>
+            <div class="schedule"><span>15:00–16:00</span>
+              <p>อาบน้ำ พักฟื้น และจัดของใช้</p>
+            </div>
+            <div class="schedule"><span>16:00–17:30</span>
+              <p>เดินเล่นบริเวณใกล้ที่พัก เช่น ลานพระศรีนครินทร์ หรือจุดที่อุทยานอนุญาต</p>
+            </div>
+            <div class="schedule"><span>17:30–18:30</span>
+              <p>รับประทานอาหารเย็น</p>
+            </div>
+            <div class="schedule"><span>18:30–20:00</span>
+              <p>เตรียมไฟฉาย เสื้อกันหนาว น้ำ และอุปกรณ์สำหรับวันถัดไป</p>
+            </div>
+            <div class="schedule"><span>20:00</span>
+              <p>เข้านอน เตรียมตื่นเช้ามืด</p>
+            </div>
+            <p class="note">ระยะทางเดินขึ้นประมาณ 9 กม. ใช้เวลารวมพักราว 5–7 ชม. เวลาในตารางเป็นกรอบวางแผน
+              ควรปรับตามความเร็วและสภาพอากาศของกลุ่ม</p>
+          </div>
+
+          <div class="timeline-day">
+            <div class="timeline-title"><span>DAY 02 · 8 NOV</span><b>พระอาทิตย์ขึ้นผานกแอ่น + เส้นทางหน้าผา</b></div>
+            <div class="eyebrow">MORNING · PHA NOK AEN</div>
+            <div class="schedule"><span>04:15–04:30</span>
+              <p>ตื่น แต่งตัว เตรียมไฟฉายคาดหัวและเสื้อกันหนาว</p>
+            </div>
+            <div class="schedule"><span>04:30–04:50</span>
+              <p>เดินไปยังจุดนัดหมาย</p>
+            </div>
+            <div class="schedule"><span>05:00</span>
+              <p>รวมกลุ่มกับเจ้าหน้าที่ตามรอบนำชม</p>
+            </div>
+            <div class="schedule"><span>05:00–05:45</span>
+              <p>เดินไปผานกแอ่น</p>
+            </div>
+            <div class="schedule"><span>05:45–06:30</span>
+              <p>ชมพระอาทิตย์ขึ้นและถ่ายภาพ</p>
+            </div>
+            <div class="schedule"><span>06:30–07:15</span>
+              <p>เดินกลับวังกวาง</p>
+            </div>
+            <div class="schedule"><span>07:15–08:00</span>
+              <p>รับประทานอาหารเช้าและพัก</p>
+            </div>
+            <div class="eyebrow" style="margin-top:14px">CLIFF ROUTE · DEPART 08:00</div>
+            <div class="route-points">
+              <div><b>08:00</b><span>ออกจากวังกวาง</span></div>
+              <div><b>08:30</b><span>ผาเมษา</span></div>
+              <div><b>09:00</b><span>ผาหมากดูก</span></div>
+              <div><b>09:30</b><span>ผาจำศีล</span></div>
+              <div><b>10:00</b><span>ผานาน้อย</span></div>
+              <div><b>11:30</b><span>ผาเหยียบเมฆ</span></div>
+              <div><b>12:45</b><span>ผาแดง</span></div>
+              <div><b>14:00–14:30</b><span>ผาหล่มสัก</span></div>
+            </div>
+            <div class="schedule"><span>ก่อน 18:00</span>
+              <p>เริ่มออกจากผาหล่มสัก ไม่ควรเกินเวลาที่อุทยานกำหนด</p>
+            </div>
+            <div class="schedule"><span>18:00–20:30/21:00</span>
+              <p>เดินทางกลับวังกวาง (ขึ้นกับความเร็วและสภาพเส้นทาง)</p>
+            </div>
+            <div class="schedule"><span>20:30–21:00</span>
+              <p>พัก รับประทานอาหาร และเตรียมตัวพักผ่อน</p>
+            </div>
+            <p class="note">ระยะทางโดยประมาณ: ผานกแอ่นไป-กลับ 4 กม. และเส้นทางหน้าผาไป-กลับราว 18 กม. รวมทั้งวันประมาณ
+              20–22 กม. เป็นวันที่เดินหนัก ควรประเมินกำลังกลุ่มและสภาพอากาศระหว่างทาง</p>
+          </div>
+
+          <div class="timeline-day">
+            <div class="timeline-title"><span>DAY 03 · 9 NOV</span><b>ลงจากภูกระดึง → วัดคีรีวัน จ.สระบุรี</b></div>
+            <div class="schedule"><span>06:00–07:00</span>
+              <p>ตื่น เก็บสัมภาระ รับประทานอาหารเช้า</p>
+            </div>
+            <div class="schedule"><span>07:00–11:00/12:00</span>
+              <p>เริ่มเดินลงจากยอดภูกระดึงสู่ศูนย์บริการด้านล่าง</p>
+            </div>
+            <div class="schedule"><span>11:00–12:00</span>
+              <p>ถึงศรีฐาน พักและรับประทานอาหารกลางวัน</p>
+            </div>
+            <div class="schedule"><span>12:00–13:00</span>
+              <p>รับสัมภาระ ตรวจนับของ และขึ้นรถตู้</p>
+            </div>
+            <div class="schedule"><span>13:00</span>
+              <p>ออกเดินทางไปวัดคีรีวัน ต.ซับสนุ่น อ.มวกเหล็ก จ.สระบุรี</p>
+            </div>
+            <div class="schedule"><span>18:00–19:00</span>
+              <p>คาดว่าจะถึงวัดคีรีวัน</p>
+            </div>
+            <div class="schedule"><span>19:00 เป็นต้นไป</span>
+              <p>พักผ่อนและรับประทานอาหารเย็น</p>
+            </div>
+            <p class="note">ระยะทางเดินลงประมาณ 5–6 กม. ใช้เวลาราว 4–5 ชม. ส่วนการเดินทางด้วยรถตู้ประมาณ 5–6 ชม.
+              โดยประมาณ</p>
+          </div>
+
+          <div class="timeline-day">
+            <div class="timeline-title"><span>DAY 04 · 10 NOV</span><b>วัดคีรีวัน → อยุธยา → สนามบินดอนเมือง</b></div>
+            <div class="schedule"><span>06:00–07:00</span>
+              <p>ตื่น เก็บของ และรับประทานอาหารเช้า</p>
+            </div>
+            <div class="schedule"><span>07:00</span>
+              <p>ออกจากวัดคีรีวัน มุ่งหน้าอยุธยา</p>
+            </div>
+            <div class="schedule"><span>08:30–09:00</span>
+              <p>คาดว่าจะถึงอยุธยา</p>
+            </div>
+            <div class="schedule"><span>09:00–10:45</span>
+              <p>เที่ยวชมวัดมหาธาตุ</p>
+            </div>
+            <div class="schedule"><span>10:45–11:30</span>
+              <p>เที่ยวชมวัดพระศรีสรรเพชญ์</p>
+            </div>
+            <div class="schedule"><span>11:30–13:00</span>
+              <p>รับประทานอาหารกลางวันที่ร้านเถ้าแก่ลาว เมนูกุ้งแม่น้ำเผา (เวลาเปิดที่แจ้งไว้ 11:00–23:00 น.)</p>
+            </div>
+            <div class="schedule"><span>13:00–14:30</span>
+              <p>เที่ยวชมวัดไชยวัฒนาราม</p>
+            </div>
+            <div class="schedule"><span>14:30–15:00</span>
+              <p>ซื้อของฝากและเตรียมเดินทาง</p>
+            </div>
+            <div class="schedule"><span>15:00–15:30</span>
+              <p>ออกจากอยุธยาไปสนามบินดอนเมือง</p>
+            </div>
+            <div class="schedule"><span>17:00–18:30</span>
+              <p>คาดว่าจะถึงสนามบินดอนเมือง</p>
+            </div>
+            <div class="schedule"><span>ไม่เกิน 19:00</span>
+              <p>ถึงสนามบินเพื่อเตรียมขึ้นเครื่อง เที่ยวบิน 20:00 น. ไปหาดใหญ่</p>
+            </div>
+            <p class="note">ควรเผื่อเวลารถติดและตรวจสอบเวลาเปิด-ปิด/การเข้าชมวัด
+              รวมถึงยืนยันเวลาเปิดร้านและจองโต๊ะกับร้านเถ้าแก่ลาวล่วงหน้า</p>
+          </div>
+        </div> -->
+
+          <div class="card" style="margin-top: 12px">
+            <div class="head" style="margin: 0 0 10px">
+              <h2>Key timings & park rules</h2>
+              <small>RECONFIRM BEFORE DEPARTURE</small>
+            </div>
+            <div class="budgetrow">
+              <span>เวลาเปิดเดินขึ้น (ข้อมูลอุทยานที่มีในแผน)</span
+              ><b>06:00–12:00</b>
+            </div>
+            <div class="budgetrow">
+              <span>เวลาเดินลง (ข้อมูลอุทยานที่มีในแผน)</span><b>07:00–13:00</b>
+            </div>
+            <div class="budgetrow">
+              <span>โซนหน้าผา (เที่ยวเอง)</span><b>เริ่ม 08:00</b>
+            </div>
+            <div class="budgetrow">
+              <span>ผาหล่มสัก</span><b>ออกก่อน 18:00</b>
+            </div>
+            <div class="budgetrow">
+              <span>ผานกแอ่น (รอบเจ้าหน้าที่นำ)</span><b>05:00–07:00</b>
+            </div>
+            <p class="note">
+              ข้อมูลเวลาเปิดเส้นทางเป็นข้อมูลตั้งต้นจากแผนที่ได้รับก่อนหน้า
+              ไม่ใช่การยืนยันประกาศล่าสุด โปรดตรวจสอบกับอุทยานก่อนเดินทาง
+              โดยเฉพาะรอบผานกแอ่นและข้อกำหนดเส้นทางหน้าผา
+            </p>
+          </div>
+        </section>
+        <section id="gear">
+          <div class="head">
+            <h2>Gear checklist</h2>
+            <small>CHECK AS YOU PACK</small>
+          </div>
+          <div class="card" style="margin-bottom: 12px">
+            <div class="row">
+              <b>Preparation progress</b
+              ><span class="accent" id="gearPct">0%</span>
+            </div>
+            <div class="bar"><span id="gearBar"></span></div>
+          </div>
+          <div class="grid checkgrid" id="checks">
+            <div class="card checkcard">
+              <h3>Hiking gear <span>01 / PACK</span></h3>
+              <div class="checkitem">
+                <input type="checkbox" id="g1" /><label for="g1"
+                  >รองเท้าเดินป่า / รองเท้าสำรอง</label
+                >
+              </div>
+              <div class="checkitem">
+                <input type="checkbox" id="g2" /><label for="g2"
+                  >เป้เดินป่า + Rain cover</label
+                >
+              </div>
+              <div class="checkitem">
+                <input type="checkbox" id="g3" /><label for="g3"
+                  >ไม้เท้าเดินป่า</label
+                >
+              </div>
+              <div class="checkitem">
+                <input type="checkbox" id="g4" /><label for="g4"
+                  >ไฟฉายคาดหัว + ถ่านสำรอง</label
+                >
+              </div>
+              <div class="checkitem">
+                <input type="checkbox" id="g5" /><label for="g5"
+                  >ขวดน้ำ / กระบอกน้ำ</label
+                >
+              </div>
+              <div class="checkitem">
+                <input type="checkbox" id="g6" /><label for="g6"
+                  >ถุงกันน้ำ / Dry bag</label
+                >
+              </div>
+            </div>
+            <div class="card checkcard">
+              <h3>Sleeping gear <span>02 / CAMP</span></h3>
+              <div class="checkitem">
+                <input type="checkbox" id="g7" /><label for="g7"
+                  >เต็นท์ / ยืนยันการเช่ากับอุทยาน</label
+                >
+              </div>
+              <div class="checkitem">
+                <input type="checkbox" id="g8" /><label for="g8">ถุงนอน</label>
+              </div>
+              <div class="checkitem">
+                <input type="checkbox" id="g9" /><label for="g9"
+                  >แผ่นรองนอน</label
+                >
+              </div>
+              <div class="checkitem">
+                <input type="checkbox" id="g10" /><label for="g10"
+                  >หมอน / ปลอกหมอน</label
+                >
+              </div>
+            </div>
+            <div class="card checkcard">
+              <h3>Clothing <span>03 / WEAR</span></h3>
+              <div class="checkitem">
+                <input type="checkbox" id="g11" /><label for="g11"
+                  >เสื้อผ้าแห้งเร็ว</label
+                >
+              </div>
+              <div class="checkitem">
+                <input type="checkbox" id="g12" /><label for="g12"
+                  >เสื้อกันฝน / เสื้อกันลม</label
+                >
+              </div>
+              <div class="checkitem">
+                <input type="checkbox" id="g13" /><label for="g13"
+                  >ถุงเท้าเดินป่า</label
+                >
+              </div>
+              <div class="checkitem">
+                <input type="checkbox" id="g14" /><label for="g14"
+                  >หมวก / ผ้าบัฟ</label
+                >
+              </div>
+              <div class="checkitem">
+                <input type="checkbox" id="g15" /><label for="g15"
+                  >ชุดนอน / ชุดเปลี่ยน</label
+                >
+              </div>
+            </div>
+            <div class="card checkcard">
+              <h3>Health & safety <span>04 / CARE</span></h3>
+              <div class="checkitem">
+                <input type="checkbox" id="g16" /><label for="g16"
+                  >ยาประจำตัว</label
+                >
+              </div>
+              <div class="checkitem">
+                <input type="checkbox" id="g17" /><label for="g17"
+                  >ชุดปฐมพยาบาล / พลาสเตอร์</label
+                >
+              </div>
+              <div class="checkitem">
+                <input type="checkbox" id="g18" /><label for="g18"
+                  >ยาทากันแมลง</label
+                >
+              </div>
+              <div class="checkitem">
+                <input type="checkbox" id="g19" /><label for="g19"
+                  >ครีมกันแดด</label
+                >
+              </div>
+              <div class="checkitem">
+                <input type="checkbox" id="g20" /><label for="g20"
+                  >อุปกรณ์ดูแลเท้า / ผ้ายืดพยุง</label
+                >
+              </div>
+            </div>
+            <div class="card checkcard">
+              <h3>Electronics <span>05 / TECH</span></h3>
+              <div class="checkitem">
+                <input type="checkbox" id="g21" /><label for="g21"
+                  >โทรศัพท์ + สายชาร์จ</label
+                >
+              </div>
+              <div class="checkitem">
+                <input type="checkbox" id="g22" /><label for="g22"
+                  >Power bank</label
+                >
+              </div>
+              <div class="checkitem">
+                <input type="checkbox" id="g23" /><label for="g23"
+                  >กล้อง / เมมโมรี่การ์ด</label
+                >
+              </div>
+              <div class="checkitem">
+                <input type="checkbox" id="g24" /><label for="g24"
+                  >ถุงกันน้ำสำหรับอุปกรณ์</label
+                >
+              </div>
+            </div>
+            <div class="card checkcard">
+              <h3>Personal items <span>06 / DAILY</span></h3>
+              <div class="checkitem">
+                <input type="checkbox" id="g25" /><label for="g25"
+                  >ของใช้ส่วนตัว / แปรงสีฟัน</label
+                >
+              </div>
+              <div class="checkitem">
+                <input type="checkbox" id="g26" /><label for="g26"
+                  >เงินสด / บัตรประชาชน</label
+                >
+              </div>
+              <div class="checkitem">
+                <input type="checkbox" id="g27" /><label for="g27"
+                  >ถุงขยะส่วนตัว</label
+                >
+              </div>
+              <div class="checkitem">
+                <input type="checkbox" id="g28" /><label for="g28"
+                  >ทิชชู่ / เจลล้างมือ</label
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="members">
+          <div class="head">
+            <h2>Expedition members</h2>
+            <small>7 TRAVELERS</small>
+          </div>
+          <div class="grid members" id="memberGrid"></div>
+        </section>
+        <section id="info">
+          <div class="head">
+            <h2>Field information</h2>
+            <small>QUICK REFERENCE</small>
+          </div>
+          <div class="grid infogrid">
+            <div class="info">
+              <div class="eyebrow">PARK</div>
+              <b>อุทยานแห่งชาติภูกระดึง</b>
+              <p>
+                ตรวจสอบประกาศเปิด–ปิดเส้นทางและข้อกำหนดเข้าพื้นที่จากช่องทางทางการ
+              </p>
+            </div>
+            <div class="info">
+              <div class="eyebrow">PORTER</div>
+              <b>ลูกหาบและสัมภาระ</b>
+              <p>
+                เตรียมเงินสดและชั่งน้ำหนักสัมภาระตามระบบของอุทยาน
+                ยืนยันเวลาและจุดรับฝาก
+              </p>
+            </div>
+            <div class="info">
+              <div class="eyebrow">EMERGENCY</div>
+              <b>ข้อมูลฉุกเฉิน</b>
+              <p>
+                บันทึกเบอร์อุทยาน โรงพยาบาลใกล้เคียง
+                และผู้ติดต่อฉุกเฉินไว้ในโทรศัพท์ทุกคน
+              </p>
+            </div>
+          </div>
+          <div class="card" style="margin-top: 12px">
+            <div class="head" style="margin: 0 0 10px">
+              <h2>Shared notes</h2>
+              <small>A NOTE FOR THE GROUP</small>
+            </div>
+            <textarea
+              id="notes"
+              rows="4"
+              style="
+                width: 100%;
+                resize: vertical;
+                background: #111516;
+                border: 1px solid var(--line);
+                border-radius: 10px;
+                padding: 12px;
+                color: var(--text);
+                font: 12px inherit;
+              "
+              placeholder="เพิ่มเบอร์โทร จุดนัดพบ รายละเอียดการจอง หรือโน้ตของกลุ่ม..."
+            ></textarea>
+            <p class="note">
+              บันทึกใน Browser ของอุปกรณ์นี้โดยอัตโนมัติ · ข้อมูลจะไม่ Sync
+              ข้ามเครื่อง
+            </p>
+          </div>
+        </section>
+        <div class="footer">
+          <span>FIELD NOTES © 2026 · EXPEDITION 001</span
+          ><span>MADE FOR THE WAY OUT THERE.</span>
+        </div>
+      </main>
+    </div>
+    <div class="mobile">
+      <button class="active" data-target="overview">
+        <span>◫</span>Overview</button
+      ><button data-target="itinerary"><span>◷</span>Plan</button
+      ><button data-target="budget"><span>◇</span>Budget</button
+      ><button data-target="gear"><span>▤</span>Gear</button
+      ><button data-target="members"><span>♧</span>Group</button>
+    </div>
+    <div class="toast" id="toast">Saved on this device</div>
+    <script>
+      const KEY = "pk-expedition-001";
+      let s = {};
+      try {
+        s = JSON.parse(localStorage.getItem(KEY) || "{}");
+      } catch (e) {}
+      const days = [
+        [
+          "DAY 00 · 06 NOVEMBER",
+          [
+            "22:00 ออกเดินทางจากกรุงเทพฯ ด้วยรถตู้เหมา",
+            "ระยะทางประมาณ 520–550 กม. ใช้เวลา 7–9 ชม. ไม่รวมแวะพัก",
+            "คาดว่าจะถึงบริเวณอุทยานช่วง 05:00–07:00 น. ของวันที่ 7 พ.ย.",
+          ],
+        ],
+        [
+          "DAY 01 · 07 NOVEMBER",
+          [
+            "05:00–06:00 ถึงอุทยาน ติดต่อเจ้าหน้าที่และประสานลูกหาบ",
+            "06:00–06:30 จัดสัมภาระและส่งกระเป๋าให้ลูกหาบ",
+            "06:30–07:00 รับประทานอาหารเช้า",
+            "07:00–11:00 เดินจากศรีฐานขึ้นไปยังหลังแป",
+            "11:00–11:30 พักและถ่ายภาพบริเวณหลังแป",
+            "11:30–12:00 พัก/เติมพลังและดื่มน้ำ",
+            "12:00–13:30 เดินจากหลังแปไปวังกวาง",
+            "13:30–14:00 ถึงวังกวาง",
+            "14:00–15:00 กางเต็นท์และจัดอุปกรณ์",
+            "15:00–16:00 อาบน้ำและพัก",
+            "16:00–17:30 เดินเล่นใกล้ที่พัก เฉพาะจุดที่อุทยานอนุญาต",
+            "17:30–18:30 รับประทานอาหารเย็น",
+            "18:30–20:00 เตรียมอุปกรณ์สำหรับวันถัดไป",
+            "20:00 เข้านอน",
+          ],
+        ],
+        [
+          "DAY 02 · 08 NOVEMBER",
+          [
+            "04:15–04:30 ตื่น เตรียมไฟฉายคาดหัวและเสื้อกันหนาว",
+            "04:30–04:50 เดินไปจุดนัดหมาย",
+            "05:00 รวมกลุ่มกับเจ้าหน้าที่",
+            "05:00–05:45 เดินไปผานกแอ่น",
+            "05:45–06:30 ชมพระอาทิตย์ขึ้น",
+            "06:30–07:15 เดินกลับวังกวาง",
+            "07:15–08:00 อาหารเช้าและพัก",
+            "08:00 ออกจากวังกวาง เริ่มเส้นทางหน้าผา",
+            "08:30 ผาเมษา · 09:00 ผาหมากดูก · 09:30 ผาจำศีล",
+            "10:00 ผานาน้อย · 11:30 ผาเหยียบเมฆ · 12:45 ผาแดง",
+            "14:00–14:30 ผาหล่มสัก",
+            "ออกจากผาหล่มสักก่อน 18:00",
+            "18:00–20:30/21:00 เดินกลับวังกวาง",
+            "20:30–21:00 พักและรับประทานอาหาร",
+            "ระยะทางรวมโดยประมาณ 20–22 กม. เป็นวันที่เดินหนัก",
+          ],
+        ],
+        [
+          "DAY 03 · 09 NOVEMBER",
+          [
+            "06:00–07:00 ตื่น เก็บสัมภาระและรับประทานอาหารเช้า",
+            "07:00–11:00/12:00 เดินลงจากยอดภูกระดึง",
+            "11:00–12:00 ถึงศรีฐาน พักและรับประทานอาหารกลางวัน",
+            "12:00–13:00 รับสัมภาระและขึ้นรถตู้",
+            "13:00 ออกเดินทางไปวัดคีรีวัน ต.ซับสนุ่น อ.มวกเหล็ก จ.สระบุรี",
+            "18:00–19:00 คาดว่าจะถึงวัดคีรีวัน",
+            "19:00 เป็นต้นไป พักผ่อนและรับประทานอาหารเย็น",
+          ],
+        ],
+        [
+          "DAY 04 · 10 NOVEMBER",
+          [
+            "06:00–07:00 ตื่น เก็บของและรับประทานอาหารเช้า",
+            "07:00 ออกจากวัดคีรีวันไปอยุธยา",
+            "08:30–09:00 คาดว่าจะถึงอยุธยา",
+            "09:00–10:45 วัดมหาธาตุ",
+            "10:45–11:30 วัดพระศรีสรรเพชญ์",
+            "11:30–13:00 รับประทานอาหารกลางวันที่ร้านเถ้าแก่ลาว (เวลาเปิดที่แจ้งไว้ 11:00–23:00 น.)",
+            "13:00–14:30 วัดไชยวัฒนาราม",
+            "14:30–15:00 ซื้อของฝากและเตรียมเดินทาง",
+            "15:00–15:30 ออกจากอยุธยาไปสนามบินดอนเมือง",
+            "17:00–18:30 คาดว่าจะถึงสนามบิน",
+            "ไม่เกิน 19:00 ถึงสนามบินสำหรับเที่ยวบิน 20:00 น. ไปหาดใหญ่",
+          ],
+        ],
+      ];
+      const money = (n) => "฿" + Number(n || 0).toLocaleString("en-US");
+      function save() {
+        localStorage.setItem(KEY, JSON.stringify(s));
+        let t = document.getElementById("toast");
+        t.classList.add("show");
+        setTimeout(() => t.classList.remove("show"), 1100);
+      }
+      function progress() {
+        let a = [...document.querySelectorAll("#checks input")],
+          n = a.filter((x) => x.checked).length,
+          p = Math.round((n / a.length) * 100);
+        document.getElementById("progressText").textContent = p + "% COMPLETE";
+        document.getElementById("checkedText").textContent =
+          n + " of " + a.length + " items prepared";
+        document.getElementById("progress").style.width = p + "%";
+        document.getElementById("gearPct").textContent = p + "%";
+        document.getElementById("gearBar").style.width = p + "%";
+        a.forEach((x) =>
+          x.closest(".checkitem").classList.toggle("done", x.checked),
+        );
+      }
+      function budget() {
+        let n = Math.max(
+            0,
+            Number(document.getElementById("other").value) || 0,
+          ),
+          v = 5000 - n;
+        document.getElementById("remaining").textContent = money(v);
+        document.getElementById("shared").textContent = money(v);
+      }
+      function day(i) {
+        document
+          .querySelectorAll(".day")
+          .forEach((x) => x.classList.toggle("sel", +x.dataset.day === i));
+        document.getElementById("detail").innerHTML =
+          "<h3>" +
+          days[i][0] +
+          "</h3><ul>" +
+          days[i][1].map((x) => "<li>" + x + "</li>").join("") +
+          "</ul>";
+      }
+      document
+        .querySelectorAll(".day")
+        .forEach((x) => (x.onclick = () => day(+x.dataset.day)));
+      document.querySelectorAll("[data-target]").forEach(
+        (b) =>
+          (b.onclick = () => {
+            let t = b.dataset.target;
+            document.getElementById(t).scrollIntoView({ behavior: "smooth" });
+            document
+              .querySelectorAll("[data-target]")
+              .forEach((x) =>
+                x.classList.toggle("active", x.dataset.target === t),
+              );
+          }),
+      );
+      document.querySelectorAll("#checks input").forEach((x) => {
+        x.checked = !!s.checks?.[x.id];
+        x.onchange = () => {
+          s.checks = s.checks || {};
+          s.checks[x.id] = x.checked;
+          save();
+          progress();
+        };
+      });
+      let other = document.getElementById("other");
+      other.value = s.other || 0;
+      other.oninput = () => {
+        s.other = other.value;
+        save();
+        budget();
+      };
+      let notes = document.getElementById("notes");
+      notes.value = s.notes || "";
+      notes.oninput = () => {
+        s.notes = notes.value;
+        localStorage.setItem(KEY, JSON.stringify(s));
+      };
+      let mg = document.getElementById("memberGrid");
+      for (let i = 0; i < 7; i++) {
+        let d = document.createElement("div");
+        d.className = "member";
+        d.innerHTML =
+          '<div class="avatar">0' +
+          (i + 1) +
+          '</div><input placeholder="Member ' +
+          (i + 1) +
+          '" aria-label="Member ' +
+          (i + 1) +
+          ' name"><small>TRAVELER · ฿3,000</small>';
+        let inp = d.querySelector("input");
+        inp.value = s.members?.[i] || "";
+        inp.oninput = () => {
+          s.members = s.members || Array(7).fill("");
+          s.members[i] = inp.value;
+          localStorage.setItem(KEY, JSON.stringify(s));
+        };
+        mg.appendChild(d);
+      }
+      document.getElementById("export").onclick = () => {
+        let b = new Blob([JSON.stringify(s, null, 2)], {
+            type: "application/json",
+          }),
+          a = document.createElement("a");
+        a.href = URL.createObjectURL(b);
+        a.download = "phu-kradueng-trip-data.json";
+        a.click();
+        URL.revokeObjectURL(a.href);
+      };
+      document.getElementById("reset").onclick = () => {
+        if (
+          confirm(
+            "Reset checklist, notes, member names and expenses on this device?",
+          )
+        ) {
+          localStorage.removeItem(KEY);
+          location.reload();
+        }
+      };
+      progress();
+      budget();
+    </script>
+  </body>
+</html>

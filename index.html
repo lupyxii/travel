@@ -1,56 +1,261 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Plans | แผนการเดินทาง</title>
-    <link rel="stylesheet" href="assets/css/dashboard-styles.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#111315">
+	<title>FIELD NOTES — Travel Dashboard</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <p class="eyebrow">TRIP DASHBOARD</p>
-            <h1>แผนการเดินทาง</h1>
-            <p>รวมแผนทริปและรายละเอียดสำคัญ</p>
-        </div>
-    </header>
+	<div class="dashboard-shell">
+		<aside class="dashboard-sidebar">
+			<a class="dashboard-brand" href="#home" aria-label="FIELD NOTES Home">
+				<span class="dashboard-brand-mark" aria-hidden="true">⌁</span>
+				<span><b>FIELD NOTES</b><small>TRAVEL / EXPEDITION</small></span>
+			</a>
+			<div class="dashboard-navgroup">
+				<div class="navlabel">WORKSPACE</div>
+				<nav class="primary-nav" aria-label="Main navigation">
+					<a href="#home" aria-current="page"><i aria-hidden="true">◫</i>Overview</a>
+					<a href="#journeys"><i aria-hidden="true">◷</i>My Trips</a>
+					<a href="#planning"><i aria-hidden="true">◇</i>Planning</a>
+				</nav>
+			</div>
+			<div class="sidebar-foot">
+				<b>TRAVEL INDEX</b>
+				FIELD NOTES · 2026<br>
+				<span>03 JOURNEYS</span>
+			</div>
+		</aside>
+		<div class="dashboard-page">
+			<header class="topbar shell">
+				<span class="topbar-note">PERSONAL TRIP INDEX · 2026</span>
+				<!-- <span class="topbar-current"><i aria-hidden="true"></i> PHU KRADUENG / 001</span> -->
+			</header>
 
-    <main class="container">
-        <section aria-labelledby="plans-heading">
-            <div class="section-heading">
-                <h2 id="plans-heading">ทริปของเรา</h2>
-                <span class="section-count">1 แผน</span>
-            </div>
-            <div class="plans-grid">
-                <article class="plan-card">
-                    <div class="plan-meta">
-                        <span class="plan-status">แผนทริป</span>
-                        <time datetime="2026-11-06">6–10 พฤศจิกายน 2569</time>
-                    </div>
-                    <h3>ภูกระดึง · สระบุรี · อยุธยา</h3>
-                    <p class="plan-description">เดินป่า ชมพระอาทิตย์ขึ้น และแวะเที่ยวอยุธยา</p>
-                    <dl class="plan-facts">
-                        <div>
-                            <dt>ระยะเวลา</dt>
-                            <dd>5 วัน 4 คืน</dd>
-                        </div>
-                        <div>
-                            <dt>การเดินทาง</dt>
-                            <dd>รถตู้เหมาคัน</dd>
-                        </div>
-                    </dl>
-                    <a href="plans/phukradueng-2026/index.html" class="plan-link">
-                        เปิดแผนทริป <span aria-hidden="true">→</span>
-                    </a>
-                </article>
-            </div>
-        </section>
-    </main>
+	<main class="shell dashboard-main" id="home">
+		<!-- <section aria-labelledby="glance-heading">
+			<div class="section-label">
+				<h2 id="glance-heading">Trip at a Glance</h2>
+				<span class="section-index">CURRENT JOURNEY</span>
+			</div>
+			<div class="metric-grid">
+				<div class="metric-card">
+					<span class="metric-icon orange" aria-hidden="true">▦</span>
+					<div><strong class="metric-value">06–10</strong><span class="metric-label">NOV 2026 · TRIP DATES</span></div>
+				</div>
+				<div class="metric-card">
+					<span class="metric-icon" aria-hidden="true">♧</span>
+					<div><strong class="metric-value">07</strong><span class="metric-label">TRAVELERS</span></div>
+				</div>
+				<div class="metric-card">
+					<span class="metric-icon orange" aria-hidden="true">◷</span>
+					<div><strong class="metric-value">05 Days</strong><span class="metric-label">04 NIGHTS</span></div>
+				</div>
+				<div class="metric-card">
+					<span class="metric-icon" aria-hidden="true">↗</span>
+					<div><strong class="metric-value">Van</strong><span class="metric-label">PRIVATE CHARTER</span></div>
+				</div>
+			</div>
+		</section> -->
 
-    <footer class="footer">
-        <div class="container">
-            <p>Travel Plans · 2026</p>
-        </div>
-    </footer>
+		<section class="trips-section" id="journeys" aria-labelledby="journeys-heading">
+		<div class="dashboard-panels" id="planning">
+			<!-- <section class="dashboard-panel" aria-labelledby="readiness-heading">
+				<h2 class="panel-heading" id="readiness-heading"><span class="panel-mark" aria-hidden="true">◇</span>Trip Readiness</h2>
+				<div class="readiness-layout">
+					<div class="readiness-meter">
+						<div class="readiness-ring" role="img" aria-label="วางแผนแล้ว 1 จาก 4 รายการ">
+							<span>25<small>%</small></span>
+						</div>
+						<span>1 OF 4 PLANNED</span>
+					</div>
+					<ul class="readiness-list">
+						<li><span class="readiness-check done" aria-hidden="true">✓</span><span>วางงบรถและกองกลาง</span></li>
+						<li><span class="readiness-check" aria-hidden="true"></span><span>ตรวจสอบการจองอุทยาน</span></li>
+						<li><span class="readiness-check" aria-hidden="true"></span><span>ยืนยันรอบผานกแอ่น</span></li>
+						<li><span class="readiness-check" aria-hidden="true"></span><span>เตรียม first aid และอุปกรณ์เดินป่า</span></li>
+					</ul>
+				</div>
+			</section> -->
+
+			<section class="dashboard-panel" aria-labelledby="countdown-heading">
+				<h2 class="panel-heading" id="countdown-heading"><span class="panel-mark" aria-hidden="true">▦</span><span id="countdown-title">Trip Countdown</span></h2>
+				<div class="countdown-values" aria-label="เวลาจนถึงออกเดินทาง">
+					<div class="countdown-unit"><strong id="count-days">--</strong><span>Days</span></div>
+					<div class="countdown-unit"><strong id="count-hours">--</strong><span>Hrs</span></div>
+					<div class="countdown-unit"><strong id="count-minutes">--</strong><span>Min</span></div>
+				</div>
+				<p class="countdown-caption" id="countdown-caption"></p>
+			</section>
+
+			<!-- <section class="dashboard-panel quick-access-panel" aria-labelledby="quick-access-heading">
+				<h2 class="panel-heading" id="quick-access-heading"><span class="panel-mark" aria-hidden="true">↯</span>Quick Access</h2>
+				<div class="quick-grid">
+					<a class="quick-link" href="Trips/phu_kradueng_trip_2026.html#gear"><span class="quick-icon" aria-hidden="true">✓</span><span>Checklist</span></a>
+					<a class="quick-link" href="Trips/phu_kradueng_trip_2026.html#budget"><span class="quick-icon" aria-hidden="true">฿</span><span>Budget</span></a>
+					<a class="quick-link" href="Trips/phu_kradueng_trip_2026.html#info"><span class="quick-icon" aria-hidden="true">⌖</span><span>Map</span></a>
+					<a class="quick-link" href="Trips/phu_kradueng_trip_2026.html#itinerary"><span class="quick-icon" aria-hidden="true">≡</span><span>Notes</span></a>
+				</div>
+			</section> -->
+		</div>
+    <br>
+			<div class="dashboard-heading">
+				<h1 id="journeys-heading">My Trips</h1>
+				<span class="section-index" id="trip-status-summary" aria-live="polite"></span>
+			</div>
+			<div class="trips-grid">
+				<a class="trip-card" href="Trips/phu_kradueng_trip_2026.html" data-trip-card data-start="2026-11-06T22:00:00+07:00" data-end="2026-11-10T23:59:59+07:00">
+					<img class="trip-card-image" src="https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&amp;fit=crop&amp;w=960&amp;q=85" alt="หุบเขาป่าสนและแนวภูเขาในแสงยามเช้า" fetchpriority="high">
+					<span class="trip-card-status" data-trip-status aria-live="polite"></span>
+					<div class="trip-card-content">
+						<span class="trip-card-country">FEATURED JOURNEY · THAILAND</span>
+						<h3>ภูกระดึง</h3>
+						<div class="trip-card-facts"><span>06–10 Nov 2026</span><span>7 Travelers</span><span>รถตู้เหมาคัน</span></div>
+						<div class="trip-card-action"><span>ภูกระดึง · สระบุรี · อยุธยา</span><span>View Details →</span></div>
+					</div>
+				</a>
+
+				<!-- <article class="trip-card" data-trip-card>
+					<img class="trip-card-image" src="https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&amp;fit=crop&amp;w=960&amp;q=85" alt="นักเดินทางเดินตามเส้นทางบนภูเขา" loading="lazy">
+					<span class="trip-card-status idea" data-trip-status aria-live="polite"></span>
+					<div class="trip-card-content">
+						<span class="trip-card-country">MORE JOURNEYS · THAILAND</span>
+						<h3>ภูสอยดาว</h3>
+						<div class="trip-card-facts"><span>เดินป่า</span><span>วันที่ยังไม่กำหนด</span></div>
+					</div>
+				</article>
+
+				<article class="trip-card" data-trip-card>
+					<img class="trip-card-image" src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&amp;fit=crop&amp;w=960&amp;q=85" alt="ทิวทัศน์และสถาปัตยกรรมในญี่ปุ่น" loading="lazy">
+					<span class="trip-card-status idea" data-trip-status aria-live="polite"></span>
+					<div class="trip-card-content">
+						<span class="trip-card-country">MORE JOURNEYS · JAPAN</span>
+						<h3>Fuji &amp; Tokyo</h3>
+						<div class="trip-card-facts"><span>ภูเขาไฟฟูจิ · โตเกียว</span><span>วันที่ยังไม่กำหนด</span></div>
+					</div>
+				</article> -->
+			</div>
+		</section>
+	</main>
+
+	<footer class="footer">
+		<div class="shell footer-inner">
+			<span>FIELDNOTES · TRAVEL DASHBOARD</span>
+			<span>PERSONAL TRIP INDEX / 2026</span>
+		</div>
+	</footer>
+		</div>
+	</div>
+	<script>
+		const tripCards = [...document.querySelectorAll("[data-trip-card]")];
+		const statusSummary = document.getElementById("trip-status-summary");
+		const countdownTitle = document.getElementById("countdown-title");
+		const countdownCaption = document.getElementById("countdown-caption");
+		const countdownValuesElement = document.querySelector(".countdown-values");
+		const countdownFields = {
+			days: document.getElementById("count-days"),
+			hours: document.getElementById("count-hours"),
+			minutes: document.getElementById("count-minutes")
+		};
+
+		function getTripPhase(card, now) {
+			const start = Date.parse(card.dataset.start);
+			const end = Date.parse(card.dataset.end);
+
+			if (!Number.isFinite(start) || !Number.isFinite(end)) return "planning";
+			if (now < start) return "upcoming";
+			if (now <= end) return "in-progress";
+			return "completed";
+		}
+
+		function formatCountdown(remaining) {
+			const totalMinutes = Math.floor(remaining / 60000);
+			return {
+				days: Math.floor(totalMinutes / 1440),
+				hours: Math.floor((totalMinutes % 1440) / 60),
+				minutes: totalMinutes % 60
+			};
+		}
+
+		function updateDashboardStatus() {
+			const now = Date.now();
+			const counts = { completed: 0, upcoming: 0, "in-progress": 0, planning: 0 };
+			let nextTrip = null;
+			let activeTrip = null;
+			let latestCompletedTrip = null;
+
+			for (const card of tripCards) {
+				const phase = getTripPhase(card, now);
+				const badge = card.querySelector("[data-trip-status]");
+				const labels = {
+					completed: "COMPLETED",
+					upcoming: "UPCOMING",
+					"in-progress": "IN PROGRESS",
+					planning: "PLANNING"
+				};
+
+				counts[phase] += 1;
+				badge.textContent = labels[phase];
+				badge.classList.toggle("idea", phase === "planning");
+				badge.classList.toggle("active", phase === "in-progress");
+				badge.classList.toggle("completed", phase === "completed");
+
+				if (phase === "upcoming" && (!nextTrip || Date.parse(card.dataset.start) < Date.parse(nextTrip.dataset.start))) {
+					nextTrip = card;
+				}
+				if (phase === "in-progress" && !activeTrip) activeTrip = card;
+				if (phase === "completed" && (!latestCompletedTrip || Date.parse(card.dataset.end) > Date.parse(latestCompletedTrip.dataset.end))) {
+					latestCompletedTrip = card;
+				}
+			}
+
+			const countLabels = {
+				completed: "COMPLETED",
+				upcoming: "UPCOMING",
+				"in-progress": "IN PROGRESS",
+				planning: "PLANNING"
+			};
+			statusSummary.textContent = Object.entries(counts)
+				.filter(([, count]) => count > 0)
+				.map(([phase, count]) => `${String(count).padStart(2, "0")} ${countLabels[phase]}`)
+				.join(" · ");
+
+			const scheduledTrip = activeTrip || nextTrip || latestCompletedTrip;
+			if (!scheduledTrip) {
+				countdownTitle.textContent = "No Scheduled Trips";
+				countdownCaption.textContent = "กำหนดวันเดินทางของทริปถัดไปเพื่อแสดง countdown";
+				countdownValuesElement.hidden = true;
+				return;
+			}
+
+			const phase = getTripPhase(scheduledTrip, now);
+			if (phase === "completed") {
+				countdownTitle.textContent = "Trip Completed";
+				countdownCaption.textContent = "Phu Kradueng · 06–10 Nov 2026";
+				countdownValuesElement.hidden = true;
+				return;
+			}
+
+			const target = Date.parse(phase === "upcoming" ? scheduledTrip.dataset.start : scheduledTrip.dataset.end);
+			countdownTitle.textContent = phase === "upcoming" ? "Upcoming Countdown" : "Trip Ends In";
+			countdownCaption.textContent = phase === "upcoming"
+				? "to Phu Kradueng · departure 06 Nov, 22:00"
+				: "to Phu Kradueng · trip ends 10 Nov 2026";
+			countdownValuesElement.hidden = false;
+
+			const values = formatCountdown(Math.max(0, target - now));
+			for (const [unit, field] of Object.entries(countdownFields)) {
+				field.textContent = String(values[unit]).padStart(2, "0");
+			}
+		}
+
+		updateDashboardStatus();
+		window.setInterval(updateDashboardStatus, 60000);
+	</script>
 </body>
 </html>
